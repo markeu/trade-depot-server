@@ -3,8 +3,6 @@ const express = require("express");
 const http = require("http");
 const bodyParser = require("body-parser");
 const cors = require("cors");
-const formData = require("express-form-data");
-const logger = require("morgan");
 const mongoose = require("mongoose");
 
 const routes = require("./routes");
@@ -24,8 +22,7 @@ mongoose
     .then(() => console.log("Connected to MongoDB"))
     .catch((err) => console.log(err.message));
 
-//app.use(formData.parse());
-app.use(logger("dev"));
+
 app.use(express.json());
 app.use(bodyParser.json({ type: "application/*+json" }));
 app.use(express.urlencoded({ extended: true }));
